@@ -181,7 +181,7 @@
     <ul>
         <li><a href="#">Trang Chủ</a></li>
         <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-        <li><a href="#">Chuyến Đi</a></li>
+        <li><a href="{Ơ route('booking) }}">Chuyến Đi</a></li>
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Hỗ Trợ</a></li>
     </ul>
