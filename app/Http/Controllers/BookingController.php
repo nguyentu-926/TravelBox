@@ -1,30 +1,46 @@
-<?php 
+<?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    public function showForm()
+    // Hiển thị form đặt vé
+    public function showBooking()
     {
-        return view('booking'); // Trả về trang đặt chuyến đi
+        return view('booking');
     }
 
-    public function store(Request $request)
+    // Xử lý đặt vé
+    public function bookTicket(Request $request)
     {
         $request->validate([
-            'fullname' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'num_people' => 'required|integer|min:1',
-            'trip_date' => 'required|date',
-            'total_price' => 'required|numeric',
-            'payment_method' => 'required|string',
+            'email' => 'required|email|max:255',
+            'showtime' => 'required|string',
+            'quantity' => 'required|integer|min:1',
+        ], [
+            'name.required' => 'Vui lòng nhập họ tên.',
+            'phone.required' => 'Vui lòng nhập số điện thoại.',
+            'email.required' => 'Vui lòng nhập email.',
+            'showtime.required' => 'Vui lòng chọn suất chiếu.',
+            'quantity.required' => 'Vui lòng chọn số lượng vé.',
+            'quantity.min' => 'Số lượng vé phải lớn hơn 0.',
         ]);
 
-        Booking::create($request->all()); // Lưu vào database
+        Booking::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'showtime' => $request->showtime,
+            'quantity' => $request->quantity,
+        ]);
 
-        return redirect()->route('booking.form')->with('success', 'Đặt chuyến đi thành công!');
+        return redirect('/')->with('success', 'Đặt vé thành công!');
     }
 }

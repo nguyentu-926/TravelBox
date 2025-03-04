@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Hiển thị form đăng ký
     public function showRegister()
     {
         return view('auth.register');
     }
 
-    // Xử lý đăng ký tài khoản
     public function register(Request $request)
     {
         $request->validate([

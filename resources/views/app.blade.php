@@ -181,7 +181,7 @@
     <ul>
         <li><a href="#">Trang Chủ</a></li>
         <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-        <li><a href="{Ơ route('booking) }}">Chuyến Đi</a></li>
+        <li><a href="{{ route('booking') }}">Chuyến Đi</a></li>
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Hỗ Trợ</a></li>
     </ul>
@@ -214,10 +214,12 @@
                     <div class="destination-card">
                         <img src="images/a3.jpg" alt="Paris">
                         <h3>Paris</h3>
+                        <p>15tr / 3 ngày 2 đêm </p>
                     </div>
                     <div class="destination-card">
                         <img src="images/a8.jpg" alt="Phuong_Hoang_Co_Tran">
                         <h3>Phượng hoàng cổ trấn</h3>
+                        <p>5tr / 3 ngày 2 đêm</p>
                     </div>
                 </div>
             </section>
